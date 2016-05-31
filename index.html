@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app> <!-- Ativa o ANGULAR -->
 <head>
 	<title>Sexta Aula</title>
 	<meta charset="utf-8">
@@ -7,6 +7,21 @@
 	<script src="vendor/angularjs/angular.js"></script>
 </head>
 <body>
-	<h1>Hello AngularJS!</h1>
+	<div class="container">
+		<h1>Seu nome é : {{pessoa.varNome}}</h1>
+		<h1>Seu e-mail é : {{pessoa.varmail}} </h1>
+
+		<input type="text" ng-model="pessoa.varNome" class="form-control" placeholder="Insira seu nome">
+		<br>
+		<input type="text" ng-model="pessoa.varmail" class="form-control" placeholder="Insira o email">
+		<br>
+		
+		<br>
+		<button class="btn btn-primary" ng-click="varMostrar=pessoa">Mostrar </button>
+		<br>
+		<div>{{varMostrar}}</div>
+		<br>
+
+	</div>
 </body>
 </html>
