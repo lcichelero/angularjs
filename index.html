@@ -1,36 +1,62 @@
 <!DOCTYPE html>
-<html ng-app> <!-- Ativa o ANGULAR -->
+<html ng-app="myApp"> <!-- Ativa o ANGULAR -->
 <head>
 	<title>Sexta Aula</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
 	<script src="vendor/angularjs/angular.js"></script>
-</head>
-<body>
-	<div class="container">
-		<h1>Seu nome é : {{pessoa.varNome}}</h1>
-		<h1>Seu e-mail é : {{pessoa.varmail}} </h1>
 
-		<input type="text" ng-model="pessoa.varNome" class="form-control" placeholder="Insira seu nome">
+	<!-- O script abaixo é obrigatório para que o angular funcione com arquivos JS separados -->
+	<script>
+		angular.module('myApp', []).controller('MeuController', function($scope) {
+			$scope.pessoa = [{
+				varNome : 'Leandro',
+				varMail : 'lcichelero@ciss.com.br'
+			},{
+				varNome : 'Pedro',
+				varMail : 'pedro@ciss.com.br'
+			}];
+			//Mensagem
+			$scope.msg = 'Isso está visivel!';
+
+			//Função
+			$scope.mostrarFn = function(){
+				$scope.mostrar = !$scope.mostrar;
+			}
+		})
+	</script>
+</head>
+<body ng-controller="MeuController"> 
+	<div class="container">
+		<h1>Hello <span ng-bind="pessoa.varNome"</span></h1>
+		<h1>Seu nome é : {{pessoa[1].varNome}}</h1>
+		<h1>Seu e-mail é : {{pessoa[1].varMail}} </h1>
+
+		<input type="text" ng-model="pessoa[0].varNome" class="form-control" placeholder="Insira seu nome">
 		<br>
-		<input type="text" ng-model="pessoa.varmail" class="form-control" placeholder="Insira o email">
+		<input type="text" ng-model="pessoa[0].varmail" class="form-control" placeholder="Insira o email">
 		<br>
-		
 		<br>
+		<!--
 		<button class="btn btn-primary" ng-click="varMostrar=pessoa">Atribuir valores ao objeto</button>
+		-->
 		<button class="btn btn-danger" ng-click="mostrar = true">Mostrar</button>
-		<button class="btn btn-danger" ng-click="mostrar = false">Ocultar</button>
+		<button class="btn btn-danger" ng-click="mostrarFn()">Mostrar/Ocultar</button>
+
 		<!-- <div><h1>{{varMostrar}}</h1></div> 
 
 		<br>
 		<div ng-hide="mostrar"><h1>{{varMostrar}}</h1></div>
 		<br>
 
-		-->
+		
 
 		<br>
 		<div ng-show="mostrar"><h1>{{varMostrar}}</h1></div>
 		<br>
+		-->
+
+		<pre ng-if="mostrar">{{msg}}</pre>
 
 	</div>
 </body>
