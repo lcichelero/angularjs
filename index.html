@@ -17,9 +17,19 @@
 		<br>
 		
 		<br>
-		<button class="btn btn-primary" ng-click="varMostrar=pessoa">Mostrar </button>
+		<button class="btn btn-primary" ng-click="varMostrar=pessoa">Atribuir valores ao objeto</button>
+		<button class="btn btn-danger" ng-click="mostrar = true">Mostrar</button>
+		<button class="btn btn-danger" ng-click="mostrar = false">Ocultar</button>
+		<!-- <div><h1>{{varMostrar}}</h1></div> 
+
 		<br>
-		<div>{{varMostrar}}</div>
+		<div ng-hide="mostrar"><h1>{{varMostrar}}</h1></div>
+		<br>
+
+		-->
+
+		<br>
+		<div ng-show="mostrar"><h1>{{varMostrar}}</h1></div>
 		<br>
 
 	</div>
